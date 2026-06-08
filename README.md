@@ -6,6 +6,11 @@ Play through all **13 rounds** of a Double-Twelve domino set, manage chicken fee
 
 ---
 
+## Live Demo
+
+https://sanjanas-dominos.netlify.app/
+---
+
 ## Features
 
 * Full Double-Twelve domino set (91 tiles)
