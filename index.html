@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chicken Foot — The House-Rules Dominoes Game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<nav>
+  <span class="brand">Chicken<span class="f">Foot</span></span>
+  <div class="links">
+    <a href="#home" data-nav>Home</a>
+    <a href="#play" data-nav>Play</a>
+    <a href="#rules" data-nav>Rules</a>
+    <a href="#leaderboard" data-nav>Leaderboard</a>
+    <a href="#about" data-nav>About</a>
+    <a href="#play" class="play-cta">Play now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="wrap hero-grid">
+    <div class="hero">
+      <div class="kicker">House Rules · Double-Twelve</div>
+      <h1>Match the bones.<span class="f">Mind the foot.</span></h1>
+      <p class="lead">A four-armed, wild-12, chicken-foot dominoes game built on your family's own rulebook. Thirteen rounds, lowest score wins — and a bot that won't go easy on you.</p>
+      <div class="cta-row">
+        <a href="#play" class="btn">Start a match</a>
+        <a href="#rules" class="btn ghost">Read the rules</a>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="n">91</div><div class="l">Tiles</div></div>
+        <div class="stat"><div class="n">13</div><div class="l">Rounds</div></div>
+        <div class="stat"><div class="n">12</div><div class="l">Wild bones</div></div>
+        <div class="stat"><div class="n">4</div><div class="l">Center arms</div></div>
+      </div>
+    </div>
+    <div class="hero-art" id="heroArt"></div>
+  </div>
+</section>
+
+<!-- PLAY -->
+<section id="play" class="sec">
+  <div class="wrap">
+    <div class="eyebrow">The Table</div>
+    <h2>Play a full match</h2>
+    <p class="sub">Tap a glowing tile, then a glowing open end. Doubles spring a chicken foot; the 12s run wild. Drag the felt to pan, scroll to zoom.</p>
+
+    <div class="game-shell">
+      <div class="g-top">
+        <span class="gt">Chicken <span class="f">Foot</span></span>
+        <span class="spacer"></span>
+        <div class="pill">You <b id="scoreYou">0</b></div>
+        <div class="pill">Bot <b id="scoreBot">0</b></div>
+        <div class="pill">Low score wins</div>
+      </div>
+      <div class="g-status">
+        <span class="round" id="roundLabel">Round 1 · 12-12</span>
+        <span class="chip" id="turnChip">Your turn</span>
+        <span class="chip foot" id="footChip" style="display:none">Chicken foot</span>
+        <span class="chip bot" id="botTilesChip">Bot: 7 tiles</span>
+        <span class="chip" id="boneChip">Boneyard: 0</span>
+        <span class="spacer"></span>
+        <span class="msg" id="statusMsg"></span>
+      </div>
+      <div class="felt-wrap">
+        <div class="felt" id="felt"><div id="boardLayer"></div></div>
+        <div class="ghint">Drag to pan · scroll to zoom</div>
+        <div class="zoombar"><button id="zoomIn">+</button><button id="zoomOut">−</button><button id="zoomFit">⌂</button></div>
+      </div>
+      <div class="glog" id="log"></div>
+      <div class="tray">
+        <div class="tray-head">
+          <span class="who">Your hand</span>
+          <span class="count" id="handCount"></span>
+          <span class="spacer"></span>
+          <button class="sbtn ghost" id="drawBtn">Draw &amp; play</button>
+          <button class="sbtn ghost" id="passBtn">Pass</button>
+          <button class="sbtn ghost" id="newGameBtn">New match</button>
+        </div>
+        <div class="hand" id="hand"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RULES -->
+<section id="rules" class="sec">
+  <div class="wrap">
+    <div class="eyebrow">The Rulebook</div>
+    <h2>How the house plays it</h2>
+    <p class="sub">Standard Chicken Foot with a few family twists baked in. Here's everything that matters at the table.</p>
+    <div class="rule-grid">
+      <div class="rule-card"><div class="ic">🁫</div><h3>The set & the goal</h3><p>A <span class="hl">double-twelve set</span> (91 tiles), seven dealt to each player. You play <span class="hl">thirteen rounds</span> and add up leftover pips each round — the <span class="hl">lowest total</span> after the last round wins the match.</p></div>
+      <div class="rule-card"><div class="ic">🎯</div><h3>Counting down the doubles</h3><p>Round 1 opens on the <span class="hl">12-12</span>, round 2 on the 11-11, and so on down to the <span class="hl">0-0</span>. Whoever holds that round's double sets it in the center; if nobody holds it, the highest double held opens instead.</p></div>
+      <div class="rule-card"><div class="ic">✦</div><h3>Four arms from the center</h3><p>The opening double is special: it sits in the middle and opens <span class="hl">four directions at once</span>. Unlike every later double, the center one needs <span class="hl">no chicken foot</span> — all four arms are live immediately.</p></div>
+      <div class="rule-card"><div class="ic">🦶</div><h3>The chicken foot</h3><p>Play any other double and it must be <span class="hl">satisfied first</span>: the next <span class="hl">three tiles</span> branch off it as legs. Until all three legs are down, that's the only place anyone may play.</p></div>
+      <div class="rule-card"><div class="ic">🔄</div><h3>Draw one, then pass</h3><p>Stuck? <span class="hl">Draw a single tile</span> from the boneyard. Play it if you can; otherwise you pass. You only pass outright when the boneyard is empty.</p></div>
+      <div class="rule-card"><div class="ic">🏁</div><h3>Ending a round</h3><p>The round ends the instant someone <span class="hl">empties their hand</span>. Everyone else totals the dots left in hand and adds them to their score. If it blocks, both hands count.</p></div>
+    </div>
+    <div class="wild-note">
+      <b>The wild 12s —</b> every tile bearing a 12 <i>except</i> the 12-12 is wild. A wild plays on <b>any</b> open end: the 12 matches whatever's there, and the next player works off the tile's other half. The <b>12-12 is never wild</b> — it's a normal double that springs a chicken foot. (That's twelve wild bones in the set: 12-0 through 12-11.)
+    </div>
+  </div>
+</section>
+
+<!-- LEADERBOARD -->
+<section id="leaderboard" class="sec">
+  <div class="wrap">
+    <div class="eyebrow">This Session</div>
+    <h2>Leaderboard</h2>
+    <p class="sub">Match results for this visit. Win the most matches, and keep your total pips low. Resets when you reload — play a few and see who's ahead.</p>
+    <div class="lb-wrap">
+      <div class="lb-table" id="lbTable">
+        <div class="lb-row head"><span>#</span><span>Match</span><span>Result</span><span>You–Bot</span></div>
+        <div class="lb-empty" id="lbEmpty">No matches finished yet. Head to the table and play one!</div>
+      </div>
+      <div class="lb-tallies">
+        <div class="tally-card you"><div class="n" id="tYou">0</div><div class="l">Your match wins</div><div class="sub" id="tYouSub">—</div></div>
+        <div class="tally-card bot"><div class="n" id="tBot">0</div><div class="l">Bot match wins</div><div class="sub" id="tBotSub">—</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <div class="wrap">
+    <div class="eyebrow">The Story</div>
+    <h2>About this table</h2>
+    <div class="about-grid">
+      <div>
+        <h3>A family rulebook, made playable</h3>
+        <p>Chicken Foot is a classic of the domino world, but every household bends it. This version captures one family's house rules exactly: the four-armed center opener, the countdown through every double, the draw-one-then-pass turn, and the signature twist — the wild twelves.</p>
+        <p>It's built as a single page with no accounts, no tracking, and nothing saved between visits. Just open it and play.</p>
+      </div>
+      <div class="faq">
+        <details open><summary>Do I need the physical set?</summary><p>No — everything's on screen. But the rules map one-to-one to a real double-twelve set if you want to play at the table.</p></details>
+        <details><summary>How hard is the bot?</summary><p>It dumps heavy tiles, hoards its wilds, and pounces on chicken feet. Beatable, but it plays a tidy game.</p></details>
+        <details><summary>Why do rounds sometimes block?</summary><p>With only seven tiles each from a 91-tile set, open ends often can't be matched. When both players pass in a row, the round blocks and both hands are counted.</p></details>
+        <details><summary>Can two people play?</summary><p>Right now it's you versus the bot. A pass-and-play mode for two humans can be added easily.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">Chicken<span class="f">Foot</span></div>
+  <p style="margin-top:8px">House-rules dominoes · Built for the family table · Plays fresh every visit</p>
+</footer>
+
+<div class="overlay" id="overlay"><div class="modal" id="modal"></div></div>
+
+<script src="script.js"></script>
+</body>
+</html>
